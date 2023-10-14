@@ -1,0 +1,1 @@
+This zip folder contains “data.json,” a writing or coding journey report data in JSON file format. To view the report, please open it in www.processfeedback.org/report/.

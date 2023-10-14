@@ -1,2 +1,2 @@
-# pf-writing
-Process Feedback Writing prototype using CKEditor
+# Process Feedback Prototype
+Process Feedback React single-page application using CKEditor

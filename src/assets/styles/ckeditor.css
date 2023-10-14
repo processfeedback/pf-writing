@@ -1,0 +1,452 @@
+/* for links */
+.ck-content a {
+    text-decoration: underline;
+    color: blue;
+}
+
+.main-editor-window {
+    width: 95%;
+    height: 100%;
+}
+
+.ck-content pre code {
+    padding: 0px !important;
+}
+
+.ck-content .todo-list .todo-list__label>input {
+    vertical-align: top !important;
+}
+
+.ck-content .todo-list .todo-list__label>input:after {
+    position: inherit !important;
+}
+
+.indicator-delete-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+}
+
+.word-char-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-char-count {
+    padding-right: 1rem;
+}
+
+.document-editor {
+    border: 1px solid var(--ck-color-base-border);
+    border-radius: var(--ck-border-radius);
+    width: 92%;
+
+    /* Set vertical boundaries for the document editor. */
+    max-height: 70vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    
+
+    /* This element is a flex container for easier rendering. */
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.document-editor__toolbar {
+    /* Make sure the toolbar container is always above the editable. */
+    z-index: 1;
+
+    /* Create the illusion of the toolbar floating over the editable. */
+    box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
+
+    /* Use the CKEditor CSS variables to keep the UI consistent. */
+    border-bottom: 1px solid var(--ck-color-toolbar-border);
+}
+
+/* Adjust the look of the toolbar inside of the container. */
+.document-editor__toolbar .ck-toolbar {
+    border: 0;
+    border-radius: 0;
+}
+
+/* Make the editable container look like the inside of a native word processor app. */
+.document-editor__editable-container {
+    padding: calc(2 * var(--ck-spacing-large));
+    background: var(--ck-color-base-foreground);
+
+    /* Make it possible to scroll the "page" of the edited content. */
+    overflow-y: scroll;
+}
+
+.document-editor__editable-container .document-editor__editable.ck-editor__editable {
+    /* Set the dimensions of the "page". */
+    width: 15.8cm;
+    height: 70vh;
+    /* min-height: 21cm; */
+
+    /* Keep the "page" off the boundaries of the container. */
+    /* padding: 1cm 2cm 2cm; */
+
+    border: 1px hsl(0, 0%, 82.7%) solid;
+    border-radius: var(--ck-border-radius);
+    background: white;
+
+    /* The "page" should cast a slight shadow (3D illusion). */
+    box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+
+    /* Center the "page". */
+    margin: 0 auto;
+}
+
+/* for the link in dark mode */
+.ck-body-wrapper .ck-body .ck-balloon-panel .ck-balloon-rotator .ck-balloon-rotator__content form {
+    background-color: #192734;
+}
+
+.ck-body-wrapper .ck-body .ck-balloon-panel .ck-balloon-rotator .ck-balloon-rotator__content .ck-link-form .ck-labeled-field-view .ck-labeled-field-view__input-wrapper input {
+    background-color: #192734;
+    color: white;
+}
+
+.ck-body-wrapper .ck-body .ck-balloon-panel .ck-balloon-rotator .ck-balloon-rotator__content .ck-link-form .ck-labeled-field-view .ck-labeled-field-view__input-wrapper label {
+    background-color: rgb(99, 97, 97);
+    color: white;
+}
+
+/* for the checkbox border color  */
+.todo-list .todo-list__label>input::before {
+    border: 1px solid hsl(206, 66%, 45%) !important;
+}
+
+.document-editor__editable-container .ck-editor__editable {
+    /* Set the dimensions of the "page". */
+    /* width: 15.8cm; */
+    min-height: 50vh;
+
+    width: 75%;
+    height: 70vh;
+    /* Keep the "page" off the boundaries of the container. */
+    /* padding: 1cm 2cm 2cm; */
+
+    border: 1px hsl(0, 0%, 82.7%) solid;
+    border-radius: var(--ck-border-radius);
+    /* background: white; */
+
+    /* The "page" should cast a slight shadow (3D illusion). */
+    box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+
+    /* Center the "page". */
+    margin: 0 auto;
+}
+
+.ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+    /* border: none !important; */
+    border-color: hsl(218, 38%, 36%) !important;
+    /* The "page" should cast a slight shadow (3D illusion). */
+    box-shadow: 0 0 5px hsla(0, 0%, 100%, 0.1);
+}
+
+.ck-source-editing-area {
+    /* Set the dimensions of the "page". */
+    /* width: 15.8cm; */
+    min-height: 60vh;
+
+    width: 75%;
+
+    border: 1px hsl(0, 0%, 82.7%) solid;
+    border-radius: var(--ck-border-radius);
+    background: white;
+
+    /* The "page" should cast a slight shadow (3D illusion). */
+    box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+
+    /* Center the "page". */
+    margin: 0 auto;
+}
+
+.dark-mode .ck-source-editing-area textarea {
+    color: white;
+    background: var(--paper-color);
+
+}
+
+/* Override the page's width in the "Examples" section which is wider. */
+.main__content-wide .document-editor__editable-container .document-editor__editable.ck-editor__editable {
+    width: 18cm;
+}
+
+/* Set the default font for the "page" of the content. */
+.document-editor .ck-content,
+.document-editor .ck-heading-dropdown .ck-list .ck-button__label {
+    font: 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Adjust the headings dropdown to host some larger heading styles. */
+.document-editor .ck-heading-dropdown .ck-list .ck-button__label {
+    line-height: calc(1.7 * var(--ck-line-height-base) * var(--ck-font-size-base));
+    min-width: 6em;
+}
+
+/* Scale down all heading previews because they are way too big to be presented in the UI.
+      Preserve the relative scale, though. */
+.document-editor .ck-heading-dropdown .ck-list .ck-heading_heading1 .ck-button__label,
+.document-editor .ck-heading-dropdown .ck-list .ck-heading_heading2 .ck-button__label {
+    transform: scale(0.8);
+    transform-origin: left;
+}
+
+/* Set the styles for "Heading 1". */
+.document-editor .ck-content h2,
+.document-editor .ck-heading-dropdown .ck-heading_heading1 .ck-button__label {
+    font-size: 2.18em;
+    font-weight: normal;
+}
+
+.document-editor .ck-content h2 {
+    line-height: 1.37em;
+    padding-top: 0.342em;
+    margin-bottom: 0.142em;
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3,
+.document-editor .ck-heading-dropdown .ck-heading_heading2 .ck-button__label {
+    font-size: 1.75em;
+    font-weight: normal;
+    color: hsl(203, 100%, 50%);
+}
+
+.document-editor .ck-heading-dropdown .ck-heading_heading2.ck-on .ck-button__label {
+    color: var(--ck-color-list-button-on-text);
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3 {
+    line-height: 1.86em;
+    padding-top: 0.171em;
+    margin-bottom: 0.357em;
+}
+
+/* Set the styles for "Heading 3". */
+.document-editor .ck-content h4,
+.document-editor .ck-heading-dropdown .ck-heading_heading3 .ck-button__label {
+    font-size: 1.31em;
+    font-weight: bold;
+}
+
+.document-editor .ck-content h4 {
+    line-height: 1.24em;
+    padding-top: 0.286em;
+    margin-bottom: 0.952em;
+}
+
+/* Make the block quoted text serif with some additional spacing. */
+.document-editor .ck-content blockquote {
+    font-family: Georgia, serif;
+    margin-left: calc(2 * var(--ck-spacing-large));
+    margin-right: calc(2 * var(--ck-spacing-large));
+}
+
+.ck-editor__editable_inline ol,
+.ck-editor__editable_inline ul {
+    padding-left: 3rem;
+}
+
+@media only screen and (max-width: 960px) {
+
+    /* Because on mobile 2cm paddings are to big. */
+    .document-editor__editable-container .document-editor__editable.ck-editor__editable {
+        padding: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .main__content-wide .document-editor__editable-container .document-editor__editable.ck-editor__editable {
+        width: 100%;
+    }
+}
+
+/* Style document editor a'ka Google Docs.*/
+@media only screen and (min-width: 1360px) {
+    .main .main__content.main__content-wide {
+        padding-right: 0;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .main .main__content.main__content-wide {
+        width: 24cm;
+    }
+
+    .main .main__content.main__content-wide .main__content-inner {
+        width: auto;
+        margin: 0 50px;
+    }
+
+    /* Keep "page" look based on viewport width. */
+    .main__content-wide .document-editor__editable-container .document-editor__editable.ck-editor__editable {
+        width: 60%;
+    }
+}
+
+
+/* the commented lines below are for the blinking indicator
+  /* .blinking-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: orange;
+  } */
+
+/* .green-blink {
+      background-color: green;
+      animation: blink 1s ease-in-out infinite;
+  } */
+
+/* @keyframes blink {
+  50% {
+      opacity: 0;
+  }
+  } */
+
+/*
+   * Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+   * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+   */
+
+.dark-mode {
+    --ck-color-base-foreground: var(--pf-dark-nav-background-color);
+    --ck-color-base-background: var(--pf-dark-nav-background-color);
+    --ck-color-base-border: hsl(220, 6%, 81%);
+    --ck-color-base-action: hsl(104, 50.2%, 42.5%);
+    --ck-color-base-focus: hsl(209, 92%, 70%);
+    --ck-color-base-text: hsl(0, 0%, 100%);
+    --ck-color-base-active: hsl(218.1, 100%, 58%);
+    --ck-color-base-active-focus: hsl(218.2, 100%, 52.5%);
+    --ck-color-base-error: hsl(15, 100%, 43%);
+
+    /* -- Generic colors ------------------------------------------------------------------------ */
+
+    --ck-color-focus-border-coordinates: green;
+    --ck-color-focus-border: hsl(var(--ck-color-focus-border-coordinates));
+    --ck-color-focus-outer-shadow: hsl(212.4, 89.3%, 89%);
+    --ck-color-focus-disabled-shadow: hsla(209, 90%, 72%, 0.3);
+    --ck-color-focus-error-shadow: hsla(9, 100%, 56%, 0.3);
+    --ck-color-text: var(--ck-color-base-text);
+    --ck-color-shadow-drop: hsla(0, 0%, 0%, 0.15);
+    --ck-color-shadow-drop-active: hsla(0, 0%, 0%, 0.2);
+    --ck-color-shadow-inner: hsla(0, 0%, 0%, 0.1);
+
+    /* -- Buttons ------------------------------------------------------------------------------- */
+
+    --ck-color-button-default-background: transparent;
+    --ck-color-button-default-hover-background: hsl(187, 25%, 35%);
+    --ck-color-button-default-active-background: hsl(197, 47%, 48%);
+    --ck-color-button-default-disabled-background: transparent;
+
+    --ck-color-button-on-background: hsl(188, 39%, 35%);
+    --ck-color-button-on-hover-background: hsl(197, 47%, 48%);
+    --ck-color-button-on-active-background: hsl(197, 47%, 48%);
+    --ck-color-button-on-disabled-background: hsl(197, 47%, 48%);
+    --ck-color-button-on-color: hsl(185, 32%, 72%);
+
+    --ck-color-button-action-background: var(--ck-color-base-action);
+    --ck-color-button-action-hover-background: hsl(104, 53.2%, 40.2%);
+    --ck-color-button-action-active-background: hsl(104, 53.2%, 40.2%);
+    --ck-color-button-action-disabled-background: hsl(104, 44%, 58%);
+    --ck-color-button-action-text: var(--ck-color-base-background);
+
+    --ck-color-button-save: hsl(120, 100%, 27%);
+    --ck-color-button-cancel: hsl(15, 100%, 43%);
+
+    --ck-color-switch-button-off-background: hsl(0, 0%, 57.6%);
+    --ck-color-switch-button-off-hover-background: hsl(0, 0%, 49%);
+    --ck-color-switch-button-on-background: var(--ck-color-button-action-background);
+    --ck-color-switch-button-on-hover-background: hsl(104, 53.2%, 40.2%);
+    --ck-color-switch-button-inner-background: var(--ck-color-base-background);
+    --ck-color-switch-button-inner-shadow: hsla(0, 0%, 0%, 0.1);
+
+    /* -- Dropdown ------------------------------------------------------------------------------ */
+
+    --ck-color-dropdown-panel-background: var(--ck-color-base-background);
+    --ck-color-dropdown-panel-border: var(--ck-color-base-border);
+
+    /* -- Input --------------------------------------------------------------------------------- */
+
+    --ck-color-input-background: var(--ck-color-base-background);
+    --ck-color-input-border: var(--ck-color-base-border);
+    --ck-color-input-error-border: var(--ck-color-base-error);
+    --ck-color-input-text: var(--ck-color-base-text);
+    --ck-color-input-disabled-background: hsl(0, 75%, 21%);
+    --ck-color-input-disabled-border: var(--ck-color-base-border);
+    --ck-color-input-disabled-text: hsl(0, 0%, 46%);
+
+    /* -- List ---------------------------------------------------------------------------------- */
+
+    --ck-color-list-background: var(--ck-color-base-background);
+    --ck-color-list-button-hover-background: var(--ck-color-button-default-hover-background);
+    --ck-color-list-button-on-background: var(--ck-color-button-on-color);
+    --ck-color-list-button-on-background-focus: var(--ck-color-button-on-color);
+    --ck-color-list-button-on-text: var(--ck-color-base-background);
+
+    /* -- Panel --------------------------------------------------------------------------------- */
+
+    --ck-color-panel-background: var(--ck-color-base-background);
+    --ck-color-panel-border: var(--ck-color-base-border);
+
+    /* -- Toolbar ------------------------------------------------------------------------------- */
+
+    --ck-color-toolbar-background: var(--ck-color-base-background);
+    --ck-color-toolbar-border: var(--ck-color-base-border);
+
+    /* -- Tooltip ------------------------------------------------------------------------------- */
+
+    --ck-color-tooltip-background: var(--ck-color-base-background);
+    --ck-color-tooltip-text: var(--ck-color-base-background);
+
+    /* -- Engine -------------------------------------------------------------------------------- */
+
+    --ck-color-engine-placeholder-text: hsl(0, 0%, 44%);
+
+    /* -- Upload -------------------------------------------------------------------------------- */
+
+    --ck-color-upload-bar-background: hsl(209, 92%, 70%);
+
+    /* -- Link -------------------------------------------------------------------------------- */
+
+    --ck-color-link-default: hsl(240, 100%, 47%);
+    --ck-color-link-selected-background: hsla(201, 100%, 56%, 0.1);
+    --ck-color-link-fake-selection: hsla(201, 100%, 56%, 0.3);
+
+    /* -- Search result highlight ---------------------------------------------------------------- */
+
+    --ck-color-highlight-background: hsl(60, 100%, 50%);
+    --ck-color-textarea-background: black;
+}
+
+
+
+/* Later Added for better UI in mobile */
+@media only screen and (max-width: 768px) {
+    .document-editor__editable {
+        margin-top: 0rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .document-editor__editable-container .ck-editor__editable {
+        /* Keep the "page" off the boundaries of the container. */
+        padding: 0.5cm 0.5cm 0.5cm;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+
+
+.document-editor__editable-container.limit-exceeded {
+    background-color: #ffdddd;
+}

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pf-primary-color: #aec1cf ;
+  --pf-secondary-color: #101928;
+  --pf-background-color: #cddae3 ;
+  --pf-accent: #f5f5f5;
+  --pf-text-primary: #053c5e
+}
+
+@layer utilities {
+    @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    }
+  }
