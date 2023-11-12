@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --pf-primary-color: #aec1cf ;
+  --pf-primary-color: #aec1cf;
   --pf-secondary-color: #101928;
-  --pf-background-color: #cddae3 ;
+  --pf-background-color: #cddae3;
   --pf-accent: #f5f5f5;
-  --pf-text-primary: #053c5e
+  --pf-text-primary: #053c5e;
+  --pf-error-light: #e57373;
+  --pf-error-primary: #f44336;
+  --pf-box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.2);
+  --chat-scrollbar-width: 5px;
 }
 
 @layer utilities {

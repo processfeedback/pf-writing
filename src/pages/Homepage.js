@@ -1,6 +1,7 @@
 import MyEditorComponent from "../components/MyEditor";
 import { Header } from "../components/Header";
 import Footer from "../components/Footer";
+import ChatRoom from "./ChatRoom";
 
 export const Homepage = () => {
     const localStorageName = "pf_prototype_answer";
@@ -12,6 +13,7 @@ export const Homepage = () => {
             <div className="h-[82vh] justify-center items-center no-scrollbar">
                 <MyEditorComponent localStorageName={localStorageName}/>
             </div>
+            <ChatRoom />
             <div id="footer" className='h-[10vh] w-full bg-background no-scrollbar'>
                 <Footer />
             </div>
