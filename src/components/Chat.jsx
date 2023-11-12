@@ -33,6 +33,14 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
     })
   }, [socket]);
 
+  useEffect(() => {
+    const currentURL = document.URL;
+    const needsHelp = /[?&]requestedHelp=([^&]+)/i;
+    const match = needsHelp.exec(currentURL);
+
+    if (match != null)  setRequestedHelp(match[1]);
+  }, []);
+
 
   /* --- EVENT HANDLERS --- */
   const handleTypeMessage = ({ target: { value } }) => setCurrentMessage(value);
@@ -59,25 +67,29 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
   const handleSubmitRequest = async () => {
     setShowRequestAlert(false);
 
-    const requestData = {
-      message: currentMessage,
-      room: room,
-      userName: userName,
-      url: `http://localhost:3000?roomID=${room}`,
-    };
+    if (currentMessage !== '') {
+      const messageData = {
+        room: room,
+        author: userName,
+        message: currentMessage,
+        time: new Date(Date.now()).getHours() +
+          ':' +
+          new Date(Date.now()).getMinutes(),
+      };
 
-    try {
+      const requestData = {
+        message: currentMessage,
+        userName: userName,
+        url: `http://localhost:3000?roomID=${room}&?requestedHelp=true`,
+      };
+
       // discord route will need to be updated to actual server address
-      const requestSent = await axios.post('http://localhost:3001/sendDiscord', requestData)
-      if (requestSent) setRequestedHelp(true);
-    } catch(error) {
-      console.error(error);
-    };
-  }
+      axios.post('http://localhost:3001/sendDiscord', requestData);
 
-  const handleShowRequestAlert = () => {
-    setShowRequestAlert(true);
-    handleSubmitRequest();
+      setMessageList(list => [ ...list, messageData ]);
+      setCurrentMessage('');
+      setRequestedHelp(true);
+    }
   }
 
   /* --- RENDER METHODS --- */
@@ -107,10 +119,11 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
   const renderRequestAlert = () => {
     return (
       <div className={`Chat_alert___${showRequestAlert ? 'show' : 'hide'}`}>
-        <p>Using this chat feature will send a copy of your code and a notification to our team. Do you wish to proceed?</p>
+        <p>Using this chat feature will send a copy of your code and a notification to our team.</p>
+        <p>Do you wish to proceed?</p>
         <div className='Chat_buttonContainer'>
-          <button className='Chat_button___yes'>Yes</button>
-          <button className='Chat_bitton___no'>No</button>
+          <button className='Chat_button___yes' onClick={handleSubmitRequest}>Yes</button>
+          <button className='Chat_button___no' onClick={() => setShowRequestAlert(false)}>No</button>
         </div>
       </div>
     );
@@ -126,7 +139,7 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
             value={currentMessage}
             onChange={handleTypeMessage}
           />
-          <button className='Chat_button___send' onClick={handleShowRequestAlert}>Submit</button>
+          <button className='Chat_button___send' onClick={() => setShowRequestAlert(true)}>Submit</button>
         </div>
       );
     } else {

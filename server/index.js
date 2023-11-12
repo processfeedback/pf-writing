@@ -21,28 +21,19 @@ const io = new Server(server, {
 });
 
 /* ========== ROUTES ========== */
-app.post('/sendDiscord', ({ body: { userName, room, message, url } }, res) => {
-  const userMessage = `User ${userName} has requested assistance in chat room ${room}`;
-
+app.post('/sendDiscord', ({ body: { userName, message, url } }, res) => {
   const discordMessage = {
     username: 'Captain Hook',
     avatar_url: '',
-    content: userMessage,
     embeds: [{
-      author: {
-        name: userName
-      },
-      title: 'Link to the code',
+      title: `${userName} has requested assistance`,
       description: message,
       url: url
     }]
   };
 
   axios.post(discordBot, discordMessage)
-  .then(res => {
-    // console.log(res.body.data)
-    return res.status(201)
-  })
+  .then(() => 'Request sent')
   .catch(error => console.error(`Unable to complete your request due to error: ${error}`));
 });
 

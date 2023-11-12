@@ -13,7 +13,7 @@ export default function ChatRoom() {
 
   /* --- STATE HOOKS --- */
   const [ userName, setUserName ] = useState('');
-  const [ room, setRoom ] = useState('123');
+  const [ room, setRoom ] = useState('');
   const [ showChat, setShowChat ] = useState(false);
   const [ isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -26,6 +26,14 @@ export default function ChatRoom() {
       socket.emit('joinRoom', room)
     };
   },[socket, room])
+
+  useEffect(() => {
+    const currentURL = document.URL;
+    const roomCheck = /[?&]roomID=([^&]+)/i;
+    const match = roomCheck.exec(currentURL);
+
+    if (match != null)  setRoom(match[1]);
+  }, []);
 
   /* --- EVENT HANDLERS --- */
   const handleJoinRoom = event => {
