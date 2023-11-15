@@ -16,16 +16,17 @@ export default function ChatRoom() {
   const [ room, setRoom ] = useState('');
   const [ showChat, setShowChat ] = useState(false);
   const [ isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // console.log(location.search);
+  // will need to be updated to the address of the chat server
   const socket = io.connect('http://localhost:3001');
 
   /* --- LIFECYCLE METHODS --- */
   useEffect(() => {
     if(room !== '') {
-      socket.emit('joinRoom', room)
+      const roomData = {room: room, userName: userName};
+
+      socket.emit('joinRoom', roomData);
     };
-  },[socket, room])
+  },[socket]);
 
   useEffect(() => {
     const currentURL = document.URL;
@@ -39,6 +40,7 @@ export default function ChatRoom() {
   const handleJoinRoom = event => {
     event.preventDefault();
     setIsLoggedIn(true);
+
     if (userName !== '' && room === '') {
       const createUniqueRoom = () => {
         return [...Array(12)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -46,8 +48,8 @@ export default function ChatRoom() {
 
       let newRoom = createUniqueRoom();
       setRoom(newRoom);
-    }
-  }
+    };
+  };
 
   const handleToggleChat = () => {
 
@@ -56,10 +58,7 @@ export default function ChatRoom() {
 
   const handleUserName = ({ target: { value } }) => {
     setUserName(value);
-  }
-
-
-  const handleShareCode = () => {}; // creates and sends link of code to person in chat
+  };
 
   /* --- RENDER METHODS --- */
 
@@ -94,7 +93,7 @@ export default function ChatRoom() {
             <p>Enter a User Name to start chatting with us</p>
           </div>
           <div className='ChatRoom_inputContainer'>
-            <label for='userName'>User Name:
+            <label htmlFor='userName'>User Name:
             </label>
               <input
                 type='text'
@@ -112,8 +111,8 @@ export default function ChatRoom() {
       )
     } else {
       return <></>
-    }
-  }
+    };
+  };
 
   /* --- RENDERER --- */
   return (
@@ -124,5 +123,5 @@ export default function ChatRoom() {
       </div>
       {renderChatButton()}
     </>
-  )
-}
+  );
+};

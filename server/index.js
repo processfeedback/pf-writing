@@ -38,20 +38,18 @@ app.post('/sendDiscord', ({ body: { userName, message, url } }, res) => {
 });
 
 io.on('connection', socket => {
-  // console.log(`ID: ${socket.id} connected`);
 
   socket.on('joinRoom', data => {
-    socket.join(data);
-    // console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    socket.join(data.room);
+    // emit method for feature to announce when a user enters a room
+    // socket.to(data.room).emit('userJoined', data);
   })
 
   socket.on('sendMessage', data => {
-    // console.log('Received message: ', data);
     socket.to(data.room).emit('returnMessage', data);
   });
 
   socket.on('disconnect', () => {
-    // console.log(`ID: ${socket.id} disconnected`);
     socket.removeAllListeners();
   });
 });

@@ -1,5 +1,5 @@
 /* ========== EXTERNAL MODULES ========== */
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import axios from "axios";
 
@@ -14,25 +14,23 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
   const [ messageList, setMessageList ] = useState([]);
   const [ requestedHelp, setRequestedHelp ] = useState(false);
   const [ showRequestAlert, setShowRequestAlert ] = useState(false);
+
   /* --- LIFECYCLE METHODS --- */
-  // useEffect(() => {
-  //   const savedMessages = Object.keys(localStorage);
-  //   const messageHistory = savedMessages.map(message => {
-  //     return savedMessages[message] = JSON.parse(localStorage[message])
-  //   })
-
-  //   setMessageList(messageHistory);
-  // }, [])
-
   useEffect(() => {
     socket.on('returnMessage', data => {
-      console.log(`Returned message: ${data.message}`);
       setMessageList(list => [ ...list, data ]);
 
       localStorage.setItem(messageList, JSON.stringify(data));
-    })
+    });
   }, [socket]);
 
+  useEffect(() => {
+    socket.on('userJoined', data => {
+      setMessageList(list => [ ...list, data ]);
+    });
+  }, [socket]);
+
+  // replace with React Router useParams() in prod
   useEffect(() => {
     const currentURL = document.URL;
     const needsHelp = /[?&]requestedHelp=([^&]+)/i;
@@ -61,7 +59,7 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
 
       setMessageList(list => [ ...list, messageData ]);
       setCurrentMessage('');
-    }
+    };
   };
 
   const handleSubmitRequest = async () => {
@@ -77,6 +75,8 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
           new Date(Date.now()).getMinutes(),
       };
 
+      // URL value will need to be updated to use the same URL created when the user saves their
+      // code as a link
       const requestData = {
         message: currentMessage,
         userName: userName,
@@ -89,8 +89,8 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
       setMessageList(list => [ ...list, messageData ]);
       setCurrentMessage('');
       setRequestedHelp(true);
-    }
-  }
+    };
+  };
 
   /* --- RENDER METHODS --- */
   const renderMessages = () => {
@@ -112,9 +112,9 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
             <p id='author'>{messageContent.author}</p>
           </div>
         </li>
-      )
-    })
-  }
+      );
+    });
+  };
 
   const renderRequestAlert = () => {
     return (
@@ -127,7 +127,7 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
         </div>
       </div>
     );
-  }
+  };
 
   const renderChatBar = () => {
     if (!requestedHelp) {
@@ -154,8 +154,8 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
         <button className='Chat_button___send' onClick={handleSend}>Send</button>
       </div>
       );
-    }
-  }
+    };
+  };
 
   /* --- RENDERER --- */
   return (
@@ -169,5 +169,5 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
       </ScrollToBottom>
       {renderChatBar()}
     </div>
-  )
-}
+  );
+};
