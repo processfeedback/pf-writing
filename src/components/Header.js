@@ -76,7 +76,7 @@ export const Header = () => {
                   <br />
                   <div className="text-justify" style={{ width: "100%" }}>
                     <p className="mt-3">
-                      Step 3: Upload the process data file at<u><a href="https://www.processfeedback.org/report/" target="_blank">www.processfeedback.org/report/</a></u> to view your Effort Visualization Report.
+                      Step 3: Upload the process data file at<u><a href="https://www.processfeedback.org/report/" target="_blank" rel="noreferrer">www.processfeedback.org/report/</a></u> to view your Effort Visualization Report.
                     </p>
                   </div>
                   <br />
@@ -127,13 +127,13 @@ export const Header = () => {
                   </p>
                   <div className="text-justify" style={{ width: "100%" }}>
                     <p className="mt-3">
-                      Process Feedback is a tool for visualizing the journey of a writing task. Summarizing the journey with interactive and insightful data visualizations, it helps us gain a deeper understanding of our writing process. Educators can use the tool to understand their students’ writing process, style, and habits and provide constructive feedback. More broadly, anyone can also use it to analyze their writing process. Process Feedback also works for computer programming tasks. It was featured in <u><a href="https://blogs.umsl.edu/news/2023/05/19/badri-adhikari-develops-online-tool-process-feedback/" target="_blank">UMSL Daily News</a></u> and <u><a href="https://www.mdpi.com/2227-7102/13/9/922/" target="_blank">a research article</a></u> describing the invention was published in the double-blind peer-reviewed journal, Education Science, in September 2023. It is free, does not require a login or sign-up to use, and is respectful of a user's privacy.
+                      Process Feedback is a tool for visualizing the journey of a writing task. Summarizing the journey with interactive and insightful data visualizations, it helps us gain a deeper understanding of our writing process. Educators can use the tool to understand their students’ writing process, style, and habits and provide constructive feedback. More broadly, anyone can also use it to analyze their writing process. Process Feedback also works for computer programming tasks. It was featured in <u><a href="https://blogs.umsl.edu/news/2023/05/19/badri-adhikari-develops-online-tool-process-feedback/" target="_blank" rel="noreferrer">UMSL Daily News</a></u> and <u><a href="https://www.mdpi.com/2227-7102/13/9/922/" target="_blank" rel="noreferrer">a research article</a></u> describing the invention was published in the double-blind peer-reviewed journal, Education Science, in September 2023. It is free, does not require a login or sign-up to use, and is respectful of a user's privacy.
                     </p>
                   </div>
                   <br />
                   <div className="text-justify" style={{ width: "100%" }}>
                     <p className="mt-3 text-lg">
-                      To learn more about Process Feedback, please visit <u><a href="https://www.processfeedback.org/" target="_blank">www.processfeedback.org</a></u>.
+                      To learn more about Process Feedback, please visit <u><a href="https://www.processfeedback.org/" target="_blank" rel="noreferrer">www.processfeedback.org</a></u>.
                     </p>
                   </div>
                   <br />

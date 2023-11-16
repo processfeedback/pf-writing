@@ -26,7 +26,7 @@ export default function ChatRoom() {
 
       socket.emit('joinRoom', roomData);
     };
-  },[socket]);
+  },[socket, room, userName]);
 
   useEffect(() => {
     const currentURL = document.URL;

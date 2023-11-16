@@ -22,7 +22,7 @@ export default function Chat({ socket, userName, room, isLoggedIn }) {
 
       localStorage.setItem(messageList, JSON.stringify(data));
     });
-  }, [socket]);
+  }, [socket, messageList]);
 
   useEffect(() => {
     socket.on('userJoined', data => {
